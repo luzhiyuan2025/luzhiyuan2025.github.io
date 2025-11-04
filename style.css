@@ -1,0 +1,304 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+}
+
+.header h1 {
+    color: #fff;
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: pulse 2s infinite;
+}
+
+/* 爱心动画 */
+.heart {
+    width: 100px;
+    height: 100px;
+    background-color: #ff6b6b;
+    position: relative;
+    transform: rotate(-45deg);
+    animation: beat 1.2s infinite ease-in-out;
+    margin: 0 auto 40px;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.7);
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    width: 100px;
+    height: 100px;
+    background-color: #ff6b6b;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart:before {
+    top: -50px;
+    left: 0;
+}
+
+.heart:after {
+    top: 0;
+    left: 50px;
+}
+
+@keyframes beat {
+    0% {
+        transform: scale(1) rotate(-45deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(-45deg);
+    }
+    100% {
+        transform: scale(1) rotate(-45deg);
+    }
+}
+
+/* 浮动的爱心 */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 24px;
+    color: #ff6b6b;
+    opacity: 0;
+    animation: floatUp 5s ease-in forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.message {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.message p {
+    margin: 10px 0;
+}
+
+/* 蛋糕 */
+.cake {
+    position: relative;
+    width: 150px;
+    height: 100px;
+    margin: 0 auto 40px;
+}
+
+.cake-body {
+    width: 150px;
+    height: 70px;
+    background: linear-gradient(to bottom, #f8c4c4, #f08c8c);
+    border-radius: 10px;
+    position: relative;
+    top: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.candle {
+    position: absolute;
+    width: 8px;
+    height: 30px;
+    background: #4fc3f7;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    z-index: 2;
+}
+
+.flame {
+    position: absolute;
+    width: 12px;
+    height: 20px;
+    background: #ffeb3b;
+    border-radius: 50% 50% 20% 20%;
+    top: -20px;
+    left: -2px;
+    animation: flicker 0.8s infinite alternate;
+    box-shadow: 0 0 10px #ff9800;
+}
+
+@keyframes flicker {
+    0% {
+        height: 20px;
+        opacity: 0.9;
+    }
+    100% {
+        height: 25px;
+        opacity: 1;
+    }
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+#wishBtn {
+    background: linear-gradient(to right, #ff6b6b, #ff8e8e);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    transition: all 0.3s ease;
+}
+
+#wishBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+}
+
+#wishBtn:active {
+    transform: translateY(1px);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.wish-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.wish-popup {
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+    animation: popup 0.5s ease;
+}
+
+.wish-popup h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.wish-popup p {
+    color: white;
+    font-size: 1.3rem;
+    margin: 10px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes popup {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .message {
+        font-size: 1rem;
+    }
+    
+    .heart {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .heart:before,
+    .heart:after {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .heart:before {
+        top: -40px;
+        left: 0;
+    }
+    
+    .heart:after {
+        top: 0;
+        left: 40px;
+    }
+    
+    .cake {
+        transform: scale(0.8);
+    }
+    
+    .wish-popup h2 {
+        font-size: 1.8rem;
+    }
+    
+    .wish-popup p {
+        font-size: 1rem;
+    }
+}
